@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:wirebarley}?characterEncoding=UTF-8&rewriteBatchedStatements=true
+    username: ${DB_USER:dev}
+    password: ${DB_PASSWORD:123123}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 30000
+      max-lifetime: 30000
+      leak-detection-threshold: 2000
+---
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
