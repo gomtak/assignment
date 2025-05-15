@@ -1,6 +1,7 @@
 package com.wirebarley.cache;
 
 import com.wirebarley.api.ApiApplication;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
+@Disabled // TODO ContainerTest로 변경 후 주석 해제
 @SpringBootTest(classes = ApiApplication.class) // ← 당신의 @SpringBootApplication 클래스
 @Import({RedisLockAspect.class, RedisLockTest.FakeService.class})
 class RedisLockTest {

@@ -1,10 +1,8 @@
 rootProject.name = "backend"
 
-include(
-    "api",
-    "support:cache",
-    "support:main-db"
-)
+include("api")
+include("support:cache")
+include("support:main-db")
 
 pluginManagement {
     val springBootVersion: String by settings

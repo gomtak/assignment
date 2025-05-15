@@ -29,4 +29,18 @@ subprojects {
     tasks.withType<JavaCompile>().configureEach {
         options.encoding = "UTF-8"
     }
+
+    tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+        enabled = false
+    }
+    tasks.named<Jar>("jar") {
+        enabled = true
+    }
+}
+
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    enabled = false
+}
+tasks.named<Jar>("jar") {
+    enabled = true
 }

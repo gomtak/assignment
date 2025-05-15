@@ -27,6 +27,16 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    enabled = true
+    mainClass.set("com.wirebarley.api.ApiApplication")
+}
+
+tasks.named<Jar>("jar") {
+    enabled = false
+}
+
 tasks.test {
     useJUnitPlatform()
 }

@@ -1,5 +1,25 @@
 version: '3.7'
+
 services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - redis
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/wirebarley
+      SPRING_DATASOURCE_USERNAME: dev
+      SPRING_DATASOURCE_PASSWORD: 123123
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+    networks:
+      - app-network
+
   mysql:
     image: mysql:8.0
     container_name: mysql
@@ -10,11 +30,17 @@ services:
       MYSQL_DATABASE: wirebarley
       MYSQL_USER: dev
       MYSQL_PASSWORD: 123123
+    networks:
+      - app-network
+
   redis:
     image: redis:latest
     container_name: redis
     ports:
-      - 6379:6379
+      - "6379:6379"
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: bridge
