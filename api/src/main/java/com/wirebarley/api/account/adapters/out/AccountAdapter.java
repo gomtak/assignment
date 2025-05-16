@@ -39,4 +39,9 @@ public class AccountAdapter implements AccountPort {
     public void deleteById(UUID accountId) {
         accountRepository.deleteById(accountId);
     }
+
+    @Override
+    public Boolean existsAccountNumber(String accountNumber) {
+        return accountRepository.existsByAccountNumber(accountNumber);
+    }
 }

@@ -1,5 +1,6 @@
 package com.wirebarley.api.common.handler;
 
+import com.wirebarley.api.account.domain.exception.ExistsAccountNumberException;
 import com.wirebarley.api.account.domain.exception.InsufficientBalanceException;
 import com.wirebarley.api.account.domain.exception.InvalidDepositAmountException;
 import com.wirebarley.api.account.domain.exception.InvalidWithdrawAmountException;
@@ -14,6 +15,16 @@ public class GlobalExceptionHandler {
     private ResponseEntity<ApiErrorResponse> toResponse(String message, HttpStatus status) {
         return ResponseEntity.status(status)
                 .body(new ApiErrorResponse(message, status.value()));
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ApiErrorResponse> handleIllegalState(IllegalStateException ex) {
+        return toResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ExistsAccountNumberException.class)
+    public ResponseEntity<ApiErrorResponse> handleExistsAccountNumber(ExistsAccountNumberException ex) {
+        return toResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

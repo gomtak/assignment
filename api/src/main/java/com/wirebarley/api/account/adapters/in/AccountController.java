@@ -33,12 +33,11 @@ public class AccountController {
 
     @PostMapping
     @Operation(summary = "계좌 생성", description = "계좌번호와 초기 잔액으로 새 계좌를 생성합니다.")
-    public ResponseEntity<Void> createAccount(
+    public ResponseEntity<UUID> createAccount(
             @RequestParam(name = "accountNumber") String accountNumber,
             @RequestParam(name = "initialBalance") BigDecimal initialBalance
     ) {
-        accountCreateUseCase.createAccount(accountNumber, initialBalance);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(accountCreateUseCase.createAccount(accountNumber, initialBalance));
     }
 
     @DeleteMapping

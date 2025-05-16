@@ -9,4 +9,6 @@ public interface AccountPort {
     Optional<Account> findById(UUID accountId);
     UUID save(Account account);
     void deleteById(UUID accountId);
+
+    Boolean existsAccountNumber(String accountNumber);
 }

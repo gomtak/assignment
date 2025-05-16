@@ -38,4 +38,10 @@ public class Account {
         }
         this.balance = this.balance.subtract(totalAmount);
     }
+
+    public void checkAccount() {
+        if (this.balance.compareTo(BigDecimal.ZERO) > 0) {
+            throw new IllegalStateException("잔액이 남아있는 계좌는 삭제할 수 없습니다.");
+        }
+    }
 }

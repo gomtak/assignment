@@ -3,7 +3,7 @@ package com.wirebarley.api.trasaction.adapters.dto;
 import com.wirebarley.api.trasaction.adapters.out.entity.TransactionType;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public record TransactionResponse(
@@ -12,6 +12,6 @@ public record TransactionResponse(
         BigDecimal amount,
         BigDecimal fee,
         UUID counterpartyAccountId,
-        ZonedDateTime createdAt
+        LocalDateTime createdAt
 ) {
 }
