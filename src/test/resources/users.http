@@ -1,0 +1,45 @@
+### 로그인
+POST http://localhost:8080/signin
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "123123"
+}
+
+> {% client.global.set("auth_token", response.body.accessToken); %}
+
+### 사용자 정보 조회 (/users/{userId})
+@user_id = 921884f2-127b-4cf1-add5-9b25adff2531
+GET http://localhost:8080/users/{{user_id}}
+Authorization: Bearer {{auth_token}}
+
+### 사용자 정보 수정 (/users/{userId})
+PUT http://localhost:8080/users/{{user_id}}
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "email": "test11@test.com",
+  "name": "유저1수정"
+}
+
+### 사용자 탈퇴 (/users/{userId})
+DELETE http://localhost:8080/users/bd341b49-5397-474d-ba75-bfb8264a5ee9
+Authorization: Bearer {{auth_token}}
+
+### 어드민 로그인
+POST http://localhost:8080/signin
+Content-Type: application/json
+
+{
+  "email": "admin@test.com",
+  "password": "123123"
+}
+
+> {% client.global.set("auth_token", response.body.accessToken); %}
+
+### 어드민 유저 조회
+GET http://localhost:8080/users
+Authorization: Bearer {{auth_token}}
+
