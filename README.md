@@ -65,6 +65,12 @@ KAFKA_HOST=localhost
 * 사용자 탈퇴 시 발생하는 여러 후속 작업(예: 메일 전송, 리소스 정리 등)을 병렬로 처리할 수 있도록 user.deleted 토픽에 예상되는 컨슈머 수만큼 파티션 수를 증가.
 * 병렬 처리 성능을 향상
 
+### 2. Admin 권한 체크 (controller layer vs service layer)
+
+* api 에서 명시적으로 누가 사용할 것인지 구분 할 것인가 고민
+* service layer 에서 공통적으로 권한 체크 하기 위해서 변경
+* 테스트 용이성, 통일성 고려  
+
 ---
 
 ## 🚀 비동기 처리 설명
