@@ -1,8 +1,8 @@
-# 📘 User Management REST API with Spring Boot & Kotlin
+# 📘 ProtoPie
 
 ## 🛠 프로젝트 설정 및 실행 방법
 
-### Docker Compose 실행
+### 빌드 && Docker Compose 실행
 
 ```bash
 ./gradlew build
@@ -29,7 +29,7 @@ KAFKA_HOST=localhost
 * **프레임워크**: Spring Boot 3.4.5
 * **보안**: Spring Security + JWT
 * **데이터베이스**: PostgreSQL
-* **메시징 시스템**: Kafka (KRaft 모드)
+* **메시징 시스템**: Kafka (Zookeeper 기반)
 * **API 문서화**: SpringDoc OpenAPI 3 (Swagger)
 * **테스트**: JUnit 5 + MockK + Testcontainers
 
