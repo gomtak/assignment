@@ -1,0 +1,11 @@
+spring:
+  config:
+    import:
+      - cache.yml
+      - main-db.yml
+---
+#spring:
+#  sql:
+#    init:
+#      mode: always
+#      schema-locations: classpath:db/schema.sql
