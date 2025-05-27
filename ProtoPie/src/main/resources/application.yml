@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/appdb
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+--- # Kafka
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_HOST:localhost}:9092
+--- ## JWT
+jwt:
+  secret-key: d3BJp8VzM1kxMjNOLUpYU0xvS1B2RW1LZWJ0OVd2V0hxZ3BvbEExTnBKTlFZbw==
+  access-token-lifetime-in-seconds: 86400 #1800 # 5 minutes duration by default: 30 minutes * 60 seconds * 1000 miliseconds
+  refresh-token-lifetime-in-seconds: 604800 #604800 # 60 * 60 * 24 * 7 * 1000 : 7day
+
+logging:
+  level:
+    org.apache.kafka: INFO
+    org.springframework.kafka: INFO
+
